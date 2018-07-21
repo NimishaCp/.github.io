@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <title></title>
+    <style >
+      .b{
+          margin-left: 500px;
+      }
+      @media screen and (max-width: 600px) {
+    body{
+        width: 100%;
+        margin-top: 0;
+    }
+}
+    </style>
+  </head>
+  <body>
+    <section class="hero is-primary is-bold black is-flex-fullhd">
+  <div class="hero-body size">
+    <div class="container">
+      <h1 class="title" style="text-align:center">
+        BITCOIN CONVERTER
+      </h1>
+      <div class="b">
+        <i class="fa fa-bitcoin fa-5x"></i>
+    </div></div>
+  </div>
+</section>
+<div class="field">
+<div class="control">
+<div class="columns">
+  <div class="column">
+  </div>
+  <div class="column">
+  BIT<input id="bit" class="input is-primary" type="text" placeholder="enter bit"><br></br>
+</div>
+<div class="column"></div>
+</div><div class="columns">
+  <div class="column"></div>
+  <div class="column">
+      INR<input id="INR" class="input is-primary" type="text" placeholder="enter rupee">
+  </div>
+  <div class="column">
+  </div>
+</div></div></div>
+
+<script>
+      $.ajax({url:"https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=INR",
+            method:"get",
+              success: function(data){
+              var a=data.INR;
+              var c=data.INR;
+              var result;
+          $("#bit").keyup(function(){
+              var b=$("#bit").val();
+          console.log(b);
+              result = b*a;
+              $("#INR").attr("value",result)
+            });
+              $("#INR").keyup(function(){
+              var d=$("#INR").val();
+            console.log(d);
+              result = d/c;
+              $("#bit").val(result)
+            });
+
+          }
+        });
+    </script>
+  </body>
+</html>
